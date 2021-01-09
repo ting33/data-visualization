@@ -13,9 +13,11 @@ def create_word_cloud(f):
     text = " ".join(jieba.cut(f, cut_all=False, HMM=True))
     wc = WordCloud(
         font_path="/System/Library/Fonts/STHeiti Medium.ttc",
-        max_words=10,
+        # background_color='white',
+        max_words=20,
         width=2000,
         height=1200,
+        # mask=plt.imread('/Users/zhouya/Downloads/sikao.jpg')  #背景图片
     )
     wordcloud = wc.generate(text)
     # 写词云图片
@@ -28,7 +30,7 @@ def create_word_cloud(f):
 
 # 去掉停用词
 def remove_stop_words(f):
-     stop_words = ['学会', '就是', '什么',"一共","这里","这些"]
+     stop_words = ['学会', '就是', '什么',"一共","这里","这些","的"]
      for stop_word in stop_words:
            f = f.replace(stop_word, '')
      return f
